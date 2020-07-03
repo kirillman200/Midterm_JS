@@ -1,0 +1,41 @@
+<form action="<%= (typeof actionPath === 'undefined') ? '/reservations' : actionPath %>", method="POST">
+  <% if (typeof actionPath !== 'undefined') { %>
+    <input type="hidden" name="id" value="<%= formData.id %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="roomType">Room Type</label>
+    <select name="roomType" class="form-control">
+      <option>Select a Room Type</option>
+      <option <%= formData.roomType && formData.roomType === 'Single Bed' ? 'selected' : null %> value="Single Bed">Single Bed</option>
+      <option <%= formData.roomType && formData.roomType === 'Double Bed' ? 'selected' : null %> value="Double Bed">Double Bed</option>
+      <option <%= formData.roomType && formData.roomType === 'Queen' ? 'selected' : null %> value="Queen">Queen</option>
+      <option <%= formData.roomType && formData.roomType === 'King' ? 'selected' : null %> value="King">King</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <div class="form-group">
+        <label for="checkIn">Check In</label>
+        <input type="date" name="checkIn" class="form-control" value="<%= formData.checkIn %>">
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-group">
+        <label for="checkOut">Check Out</label>
+        <input type="date" name="checkOut" class="form-control" value="<%= formData.checkOut %>">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="numOfOccupants">Number of Occupants</label>
+    <input type="number" name="numOfOccupants" class="form-control" value="<%= formData.numOfOccupants %>" min="1" step="1"/>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-dark">Submit</button>
+  </div>
+</form>
